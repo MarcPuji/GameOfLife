@@ -1,0 +1,8 @@
+Links and general info used to develop the project:
+
+github link: https://github.com/MarcPuji/GameOfLife
+
+NCURSES
+some tutorials: https://www.youtube.com/watch?v=2tWN6ntNo4w
+
+reference: http://invisible-island.net/ncurses/man/ncurses.3x.html
