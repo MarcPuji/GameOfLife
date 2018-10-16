@@ -1,3 +1,6 @@
+#ifndef DATABASE_H
+#define DATABASE_H
+
 
 typedef struct Cell{
     int x;
@@ -11,9 +14,13 @@ typedef struct Cell{
                   // in x and then by their position in y.
 } tCell;
 
-tCell* cellDataBase();
-bool checkExistence(int x, int y, tCell &a);
+tCell* cellDataBase(void);
 void insertCell(int x, int y, bool alive, tCell &a);
-void addCandidates(tCell &alive, tCell &candidates) 
-void deleteDeadCells(tCell &a);
-void freeMemory(tCell &a);
+void to_string(tCell &a);
+//bool checkExistence(int x, int y, tCell &a);
+
+//void addCandidates(tCell &alive, tCell &candidates) 
+//void deleteDeadCells(tCell &a);
+//void freeMemory(tCell &a);
+
+#endif
