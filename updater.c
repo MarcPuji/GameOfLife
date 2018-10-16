@@ -2,13 +2,8 @@
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include "updater.h"
 
-typedef struct{
-  int alive;
-  int pos_x;
-  int pos_y;
-  int neighbours;
-} cell;
 
 void neighbours(cell ** matrix, int msize){
 
