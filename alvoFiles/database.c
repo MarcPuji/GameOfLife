@@ -125,6 +125,45 @@ void toString(tCell *a){
     }
 }
 
+void freeMemory(tCell *a){
+    if(a->x != -1){
+        printf("Exploring (x, y) = (%d, %d), alive = %d, neighbors = %d\n",
+            a->x,a->y,a->alive,a->neighbors);
+    }
+    if(a->childy != NULL){
+        freeMemory(a->childy);
+    }
+    if(a->childx != NULL){
+        freeMemory(a->childx);
+    }
+    printf("Memory freed at (x, y) = (%d, %d)\n",a->x,a->y);
+    free(a);
+}
+
+void addCandidates(tCell *alive, tCell *candidates, int limitx, int limity){
+    //iterating through the alive cell data structure
+    if(alive->x != -1){
+        insertCell(alive->x,alive->y,1,candidates);
+        if(alive->x > 0)insertCell(alive->x-1,alive->y,0,candidates);
+        if(alive->x > 0 && alive->y > 0)insertCell(alive->x-1,alive->y-1,0,candidates);
+        if(alive->x > 0 && alive->y < limity-1)insertCell(alive->x-1,alive->y+1,0,candidates);
+
+        if(alive->y > 0)insertCell(alive->x,alive->y-1,0,candidates);
+        if(alive->y < limity-1)insertCell(alive->x,alive->y+1,0,candidates);
+
+        if(alive->x < limitx-1)insertCell(alive->x+1,alive->y,0,candidates);
+        if(alive->x < limitx-1 && alive->y > 0)insertCell(alive->x+1,alive->y-1,0,candidates);
+        if(alive->x < limitx-1 && alive->y < limity-1)insertCell(alive->x+1,alive->y+1,0,candidates);
+    }
+    if(alive->childy != NULL){
+        addCandidates(alive->childy,candidates,limitx,limity);
+    }
+    if(alive->childx != NULL){
+        addCandidates(alive->childx,candidates,limitx,limity);
+    }
+}
+
+
 int main(char* args){
     tCell* db = cellDataBase();
     insertCell(0,0,0,db);
@@ -134,5 +173,6 @@ int main(char* args){
     insertCell(1,1,0,db);
     insertCell(2,0,0,db);
     toString(db);
+    freeMemory(db);
     return 0;         
 }

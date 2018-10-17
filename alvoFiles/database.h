@@ -15,12 +15,13 @@ typedef struct Cell{
 } tCell;
 
 tCell* cellDataBase(void);
-void insertCell(int x, int y, bool alive, tCell &a);
-void to_string(tCell &a);
+void insertCell(int x, int y, bool alive, tCell *a);
+void to_string(tCell *a);
+void freeMemory(tCell *a);
+void addCandidates(tCell *alive, tCell *candidates, int limitx, int limity); 
+void deleteDeadCells(tCell &a);
+
 //bool checkExistence(int x, int y, tCell &a);
 
-//void addCandidates(tCell &alive, tCell &candidates) 
-//void deleteDeadCells(tCell &a);
-//void freeMemory(tCell &a);
 
 #endif
