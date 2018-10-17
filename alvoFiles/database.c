@@ -323,9 +323,9 @@ int main(char* args){
 
     // STEP2: eliminate dead candidates
     deleteDeadCells(candidates);
-    toString(candidates);
     freeMemory(alive);
     alive = candidates;
+    toString(alive);
     // END LOOP
 
     freeMemory(alive);
