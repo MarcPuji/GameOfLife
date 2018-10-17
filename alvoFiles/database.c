@@ -222,20 +222,27 @@ void deleteDeadCells(tCell *candidates){
 
 
 int main(char* args){
+    // initialize
     tCell* alive = cellDataBase();
-    tCell* candidates = cellDataBase();
     insertCell(1,0,1,alive);
     insertCell(0,1,1,alive);
     insertCell(1,2,1,alive);
     printf("ALIVE\n");
     toString(alive);
+    // LOOP
+    // STEP1: search candidates
+    tCell* candidates = cellDataBase();
     printf("CANDIDATES\n");
     addCandidates(alive,candidates,3,3);
     toString(candidates);
     printf("NEW ALIVE CELLS\n");
+
+    // STEP2: eliminate dead candidates
     deleteDeadCells(candidates);
     toString(candidates);
-
+    freeMemory(alive);
+    alive = candidates;
+    // END LOOP
 
     freeMemory(alive);
     freeMemory(candidates);
