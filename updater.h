@@ -1,5 +1,5 @@
 #include "cellstruct.h"
 
-void neighbours(cell, int);
+void neighbours(myCell **, int);
 void plotter(int, int, int);
-void updater(cell, int);
+void updater(myCell **, int);

@@ -4,11 +4,11 @@
 
 #include "cellstruct.h"
 
-void neighbours(cell ** matrix, int msize){
+void neighbours(myCell ** matrix, int msize){
 
   for (int i = 0; i < msize; i++){
     for (int j = 0; j < msize; j++){
-
+      matrix[i][j].neighbours = 0;
       if ((j-1) >= 0){ // If there is a row above
         matrix[i][j].neighbours = matrix[i][j].neighbours + matrix[i][j-1].alive;
 
@@ -44,26 +44,26 @@ void neighbours(cell ** matrix, int msize){
   }
 }
 
-void plotter(int x, int y int cell_status){
+void plotter(int x, int y, int cell_status){
 
-  if(cell_status == 1){
+  if(cell_status == true){
     mvaddch(y, x, ACS_DIAMOND);
   }
 }
 
-void updater(cell ** matrix, int msize){ // Function is recieving the matrix pointer and updating its content
+void updater(myCell ** matrix, int msize){ // Function is recieving the matrix pointer and updating its content
 
   for (int i = 0; i < msize; i++){
     for (int j = 0; j < msize; j++){
 
-      if (matrix[i][j].alive == 1){ // If the cell is alive
+      if (matrix[i][j].alive == true){ // If the cell is alive
         if (matrix[i][j].neighbours < 2 || matrix[i][j].neighbours > 3){ // It dies by under- or over- population
-          matrix[i][j] = 0;
+          matrix[i][j].alive = 0;
         }
       }
       else{ // If the cell is dead
         if (matrix[i][j].neighbours == 3){ // It becomes alive by reproduction
-          matrix[i][j] = 1;
+          matrix[i][j].alive = 1;
         }
       }
 
