@@ -5,7 +5,7 @@
 typedef struct Cell{
     int x;
     int y;
-    int neighbors;
+    int neighbours;
     int alive;
     Cell* childx; // The idea is to create a set data structure of cells
     Cell* childy; // so that we can keep track of alive cells and candidates alike.
@@ -19,7 +19,7 @@ void insertCell(int x, int y, bool alive, tCell *a);
 void to_string(tCell *a);
 void freeMemory(tCell *a);
 void addCandidates(tCell *alive, tCell *candidates, int limitx, int limity); 
-void deleteDeadCells(tCell &a);
+void deleteDeadCells(tCell *a);
 
 //bool checkExistence(int x, int y, tCell &a);
 
