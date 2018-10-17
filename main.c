@@ -26,7 +26,7 @@ int main(){
   }
 
   // Initialize the screen
-  //initscr();
+  initscr();
   // Let's load the initial configuration
   config_ini(matrix, msize);
   // And plot the initial configuration
@@ -35,7 +35,7 @@ int main(){
       plotter(matrix[i][j].pos_x, matrix[i][j].pos_y, matrix[i][j].alive);
   	}
   }
-  
+
   refresh(); // Refresh the screen so it shows the added points
 
   while (true){
