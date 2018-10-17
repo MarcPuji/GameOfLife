@@ -10,7 +10,7 @@ void neighbours(cell ** matrix, int msize){
     for (int j = 0; j < msize; j++){
 
       if ((j-1) >= 0){ // If there is a row above
-        matrix[i][j].neighbours = matrix[i][j].neighbours + matrx[i][j-1].alive;
+        matrix[i][j].neighbours = matrix[i][j].neighbours + matrix[i][j-1].alive;
 
         if ((i-1) >= 0){ // If there is a column to the left
           matrix[i][j].neighbours = matrix[i][j].neighbours + matrix[i-1][j-1].alive;
@@ -48,9 +48,6 @@ void plotter(int x, int y int cell_status){
 
   if(cell_status == 1){
     mvaddch(y, x, ACS_DIAMOND);
-  }
-  else{
-    mvaddch(y, x, ACS_HLINE);
   }
 }
 
