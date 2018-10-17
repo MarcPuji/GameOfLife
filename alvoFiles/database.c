@@ -309,13 +309,15 @@ int main(char* args){
     insertCell(1,0,1,alive);
     insertCell(0,1,1,alive);
     insertCell(1,2,1,alive);
+    int mapLimitx = 3;
+    int mapLimity = 3;
     printf("ALIVE\n");
     toString(alive);
     // LOOP
     // STEP1: search candidates
     tCell* candidates = cellDataBase();
     printf("CANDIDATES\n");
-    addCandidates(alive,candidates,3,3);
+    addCandidates(alive,candidates,mapLimitx,mapLimity);
     toString(candidates);
     printf("NEW ALIVE CELLS\n");
 
