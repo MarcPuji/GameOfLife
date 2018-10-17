@@ -1,20 +1,12 @@
-
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "config_ini.h"
 #include "updater.h"
+#include "cellstruct.h"
 
 int main(){
-
- // Initializing the cell structure
-	typedef struct{
-		int alive;
-		int pos_x;
-		int pos_y;
-		int neighbours;
-	} cell;
 
   int msize = 250;
   // Create an msize x msize matrix of cell pointers

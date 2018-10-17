@@ -1,14 +1,8 @@
-
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
 
-typedef struct{
-  int alive;
-  int pos_x;
-  int pos_y;
-  int neighbours;
-} cell;
+#include "cellstruct.h"
 
 void neighbours(cell ** matrix, int msize){
 

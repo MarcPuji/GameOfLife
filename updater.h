@@ -1,4 +1,5 @@
+#include "cellstruct.h"
 
-void neighbours(struct, int);
+void neighbours(cell, int);
 void plotter(int, int, int);
-void updater(struct, int);
+void updater(cell, int);

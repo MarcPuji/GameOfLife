@@ -1,2 +1,3 @@
+#include "cellstruct.h"
 
-void config_ini(struct, int);
+void config_ini(cell, int);
