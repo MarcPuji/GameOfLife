@@ -1,5 +1,6 @@
 #include "cellstruct.h"
+#include "ncurses.h"
 
-void neighbours(myCell **, int);
-void plotter(int, int, int);
-void updater(myCell **, int);
+void neighbours(myCell **, int, int);
+void plotter(int, int, int, WINDOW *);
+bool updater(myCell **, int, int, WINDOW *);

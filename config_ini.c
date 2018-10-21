@@ -4,16 +4,30 @@
 
 #include "cellstruct.h"
 
-void config_ini(myCell ** matrix, int msize){ // Load the initial configuration to the created matrix
+void config_ini(myCell ** matrix, int msizex, int msizey){ // Load the initial configuration to the created matrix
 	////// TODO: INSERTING PIECES FUNCTIONS /////
-	// Let's add a Beehive figure
-	matrix[msize/2][msize/2].alive = 1;
-	matrix[msize/2 + 1][msize/2].alive = 1;
-	matrix[msize/2 - 1][msize/2 + 1].alive = 1;
-	matrix[msize/2 + 2][msize/2 + 1].alive = 1;
-	matrix[msize/2][msize/2 + 2].alive = 1;
-	matrix[msize/2 + 1][msize/2 + 2].alive = 1;
 
-	matrix[msize/2][msize/2 + 1].alive = 1;
-	matrix[msize/2 + 1][msize/2 +1].alive = 1;
+	// Beehive figure
+	//matrix[msizex/2][msizey/2].alive = 1;
+	//matrix[msizex/2 + 1][msizey/2].alive = 1;
+	//matrix[msizex/2 - 1][msizey/2 + 1].alive = 1;
+	//matrix[msizex/2 + 2][msizey/2 + 1].alive = 1;
+	//matrix[msizex/2][msizey/2 + 2].alive = 1;
+	//matrix[msizex/2 + 1][msizey/2 + 2].alive = 1;
+	// Beehive figure
+
+	// R-pentomino
+	// matrix[msizex/2][msizey/2].alive = 1;
+	// matrix[msizex/2][msizey/2 - 1].alive = 1;
+	// matrix[msizex/2 + 1][msizey/2 - 1].alive = 1;
+	//matrix[msizex/2][msizey/2 + 1].alive = 1;
+	//matrix[msizex/2 - 1][msizey/2].alive = 1;
+	// R-pentomino
+
+	// Glider
+	matrix[msizex/2][msizey/2 - 1].alive = 1;
+	matrix[msizex/2 + 1][msizey/2].alive = 1;
+	matrix[msizex/2][msizey/2 + 1].alive = 1;
+	matrix[msizex/2 + 1][msizey/2 + 1].alive = 1;
+	matrix[msizex/2 - 1][msizey/2 + 1].alive = 1;
 }
