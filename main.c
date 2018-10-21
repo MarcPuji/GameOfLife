@@ -10,7 +10,7 @@
 
 int main(){
 
-  int msize = 250;
+  int msize = 38;
   // Create an msize x msize matrix of cell pointers
   myCell ** matrix = (myCell **) malloc(msize*sizeof(myCell *)); // 250 cell pointers
   for (int i = 0; i < msize; i++){ // for each position, create 250 more
@@ -37,15 +37,21 @@ int main(){
   }
 
   refresh(); // Refresh the screen so it shows the added points
+  sleep(2);
+  getch();
 
   while (true){
+  	// Clear the window before updating the image
+  	clear();
     // Get the neighbour information of the current status
     neighbours(matrix, msize);
     // Update the screen
     updater(matrix, msize);
     // Refresh the screen so it shows updates
-    getch();
     refresh();
+
+    //sleep(2);
+    getch();
   }
   
   endwin(); // End the screen

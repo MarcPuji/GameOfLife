@@ -46,8 +46,8 @@ void neighbours(myCell ** matrix, int msize){
 
 void plotter(int x, int y, int cell_status){
 
-  if(cell_status == true){
-    mvaddch(y, x, ACS_DIAMOND);
+  if(cell_status == 1){
+    mvaddch(y, x, ACS_CKBOARD);
   }
 }
 
@@ -56,7 +56,7 @@ void updater(myCell ** matrix, int msize){ // Function is recieving the matrix p
   for (int i = 0; i < msize; i++){
     for (int j = 0; j < msize; j++){
 
-      if (matrix[i][j].alive == true){ // If the cell is alive
+      if (matrix[i][j].alive == 1){ // If the cell is alive
         if (matrix[i][j].neighbours < 2 || matrix[i][j].neighbours > 3){ // It dies by under- or over- population
           matrix[i][j].alive = 0;
         }

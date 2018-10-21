@@ -13,4 +13,7 @@ void config_ini(myCell ** matrix, int msize){ // Load the initial configuration 
 	matrix[msize/2 + 2][msize/2 + 1].alive = 1;
 	matrix[msize/2][msize/2 + 2].alive = 1;
 	matrix[msize/2 + 1][msize/2 + 2].alive = 1;
+
+	matrix[msize/2][msize/2 + 1].alive = 1;
+	matrix[msize/2 + 1][msize/2 +1].alive = 1;
 }
