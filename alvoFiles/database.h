@@ -16,7 +16,7 @@ typedef struct Cell{
 
 tCell* cellDataBase(void);
 void insertCell(int x, int y, bool alive, tCell *a);
-void to_string(tCell *a);
+void toString(tCell *a);
 void freeMemory(tCell *a);
 void addCandidates(tCell *alive, tCell *candidates, int limitx, int limity); 
 void deleteDeadCells(tCell *a);
