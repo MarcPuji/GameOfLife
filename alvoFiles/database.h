@@ -13,10 +13,6 @@ typedef struct Cell{
                   // in x and then by their position in y.
 } tCell;
 
-typedef struct {
-	int x;
-	int y;
-} toPlotCells;
 
 tCell* cellDataBase(void);
 void insertCell(int x, int y, bool alive, tCell *a);
