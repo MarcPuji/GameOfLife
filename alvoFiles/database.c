@@ -303,34 +303,3 @@ void deleteDeadCells(tCell *candidates){
 }
 
 
-int main(char* args){
-    // initialize
-    tCell* alive = cellDataBase();
-    insertCell(1,0,1,alive);
-    insertCell(0,1,1,alive);
-    insertCell(1,2,1,alive);
-    int mapLimitx = 3;
-    int mapLimity = 3;
-    printf("ALIVE\n");
-    toString(alive);
-    // LOOP
-    // STEP1: search candidates
-    tCell* candidates = cellDataBase();
-    printf("CANDIDATES\n");
-    addCandidates(alive,candidates,mapLimitx,mapLimity);
-    toString(candidates);
-    printf("NEW ALIVE CELLS\n");
-
-    // STEP2: eliminate dead candidates
-    deleteDeadCells(candidates);
-    freeMemory(alive);
-    alive = candidates;
-    toString(alive);
-    // END LOOP
-
-    freeMemory(alive);
-    freeMemory(candidates);
-    return 0;         
-}
-
-

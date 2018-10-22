@@ -20,3 +20,41 @@ void toPlot(tCell *a){
                              // for the sake of simplicity.)
     }
 }
+
+int main(char* args){
+	initscr();
+	// initialize
+    tCell* alive = cellDataBase();
+    insertCell(1,0,1,alive);
+    insertCell(0,1,1,alive);
+    insertCell(1,2,1,alive);
+    int mapLimitx = 3;
+    int mapLimity = 3;
+    printf("ALIVE\n");
+    toPlot(alive);
+    refresh();
+    getch();
+    printf("hola sinior\n");
+    // LOOP
+    // STEP1: search candidates
+    tCell* candidates = cellDataBase();
+    printf("CANDIDATES\n");
+    addCandidates(alive,candidates,mapLimitx,mapLimity);
+    printf("NEW ALIVE CELLS\n");
+
+    // STEP2: eliminate dead candidates
+    
+    deleteDeadCells(candidates);
+    freeMemory(alive);
+    alive = candidates;
+    toPlot(alive);
+    printf("before refresh\n");
+    refresh();
+    printf("manigga\n");
+    // END LOOP
+    freeMemory(alive);
+    printf("lele");
+    getch();
+    endwin();
+    return 0;   
+}
