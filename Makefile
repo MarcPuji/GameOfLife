@@ -10,11 +10,7 @@ main.o: main.c $(DEPS)
 config_ini.o: config_ini.c cellstruct.h 
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-<<<<<<< HEAD
-updater.o: updater.c cellstruct.h 
-=======
 updater.o: updater.c cellstruct.h
->>>>>>> rectangular_array
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 GOF: $(OBJ) $(DEPS)
