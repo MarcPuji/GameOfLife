@@ -31,21 +31,21 @@ void configuration_v2(tCell *a){
       printf("R-pentomino selected for configuration %i\n",i+1);
       printf("Enter location R-pentomino config %i upper left cell in x(columns) and y(rows)\n",i+1);
       scanf("%u %u", &loc_config_x[i], &loc_config_y[i]);
-      R_pentomino_insert(loc_config_x[i],loc_config_y[i],a); //a es un puntero tipo tCell (LLAMARLO ASI EN EL MAIN, NO ALIVE QUE CREA CONFUSION PORQUE TAMBIEN SE INSERTAN CELDAS MUERTAS)
+      R_pentomino_insert(loc_config_x[i],loc_config_y[i],a); //a is a type tCell pointer
     }
 
     else if (configType[i]==2){
       printf("Diehard selected for configuration %i\n",i+1);
       printf("Enter location Diehard config %i upper left cell in x(columns) and y(rows)\n",i+1);
       scanf("%u %u", &loc_config_x[i], &loc_config_y[i]);
-      //Diehard instert function
+      Diehard_insert(loc_config_x[i],loc_config_y[i],a); //a is a type tCell pointer
     }
 
     else if (configType[i]==3){
       printf("Acorn selected for configuration %i\n",i+1);
       printf("Enter location Acorn config %i upper left cell in x(columns) and y(rows)\n",i+1);
       scanf("%u %u", &loc_config_x[i], &loc_config_y[i]);
-      //Acorn instert function
+      Acorn_insert(loc_config_x[i],loc_config_y[i],a); //a is a type tCell pointer
     }
   }
   return confs;
