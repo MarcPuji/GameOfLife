@@ -2,16 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <signal.h>
 
 #include "cellstruct.h"
 #include "config_ini.h"
 #include "updater.h"
 
 
+
+
 int main(){
 
   int msizey;
-  int msizex;
+  int msizex;	
+  char letra;
 
   bool isAlive = true;
 
@@ -35,7 +39,6 @@ int main(){
   		matrix[i][j].pos_y = j;
   	}
   }
-
   // Let's load the initial configuration
   config_ini(matrix, msizex, msizey);
   // And plot the initial configuration
@@ -48,7 +51,7 @@ int main(){
   wrefresh(mywin); // Refresh the screen so it shows the added points
   sleep(2);
 
-  while (isAlive){
+  for (int i=1;i<5;i++){
   	// Clear the window before updating the image
   	wclear(mywin);
     // Get the neighbour information of the current status
@@ -59,14 +62,18 @@ int main(){
     wrefresh(mywin);
     sleep(1);
   }
+
   // If game is not alive, end the screen
   endwin();
   // Free the memory
   for (int i = 0; i < msizex; i++){
     free(matrix[i]);
   }
-  free(matrix);
+  free(matrix);	
   return 0;
 }
+
+
   
+
   
