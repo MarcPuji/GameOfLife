@@ -3,67 +3,53 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "cellstruct.h"
 #include "config_ini.h"
-#include "updater.h"
+#include "plotter.h"
+#include "database.h"
 
 int main(){
 
   int msizey;
   int msizex;
 
-  bool isAlive = true;
-
   // Initialize our screen with max resolution
   initscr();
   WINDOW * mywin = newwin(0,0,0,0);
-
+  // Get the screen resolution
   msizex = getmaxx(mywin);
   msizey = getmaxy(mywin);
 
-  // Create an msize x msize matrix of cell pointers
-  myCell ** matrix = (myCell **) malloc(msizex*sizeof(myCell *)); // 250 cell pointers
-  for (int i = 0; i < msizex; i++){ // for each position, create 250 more
-    matrix[i] = (myCell *) malloc(msizey*sizeof(myCell));
-  }
-
-  // Give each cell its own position
-  for (int i = 0; i < msizex; i++){
-  	for (int j = 0; j < msizey; j++){
-  		matrix[i][j].pos_x = i;
-  		matrix[i][j].pos_y = j;
-  	}
-  }
-  // Let's load the initial configuration
-  config_ini(matrix, msizex, msizey);
-  // And plot the initial configuration
-  for (int i = 0; i < msizex; i++){
-    for (int j = 0; j < msizey; j++){
-      plotter(matrix[i][j].pos_x, matrix[i][j].pos_y, matrix[i][j].alive, mywin);
-  	}
-  }
-
-  wrefresh(mywin); // Refresh the screen so it shows the added points
+  // Initialize the database
+  tCell* alive_cells = cellDataBase();
+  // Load the initial configuration to the database
+  config_ini(alive_cells, msizex, msizey);
+  // Plot the initial configuration to the screen
+  toPlot(alive_cells, mywin);
+  wrefresh(mywin);
   sleep(2);
 
-  while (isAlive){
+  while (true){
+    // In each timestep we have to:
+    // STEP1: Look for candidates to be alive the next timestep
+    tCell* candidate_cells = cellDataBase();
+    addCandidates(alive_cells, candidate_cells, msizex, msizey);
+    // STEP2: Check which candidates make it through the next generation
+    //        and delete the dead cells
+    deleteDeadCells(candidate_cells);
+    // We have the new alive cells in the candidates database, so
+    // STEP3: Free the unneeded memory and make alive pointer
+    //        point to the new alive cells database
+    freeMemory(alive_cells);
+    alive_cells = candidate_cells;
+    // STEP4: Plot the new alive cells  
   	// Clear the window before updating the image
   	wclear(mywin);
-    // Get the neighbour information of the current status
-    neighbours(matrix, msizex, msizey);
-    // Update the screen
-    isAlive = updater(matrix, msizex, msizey, mywin);
-    // Refresh the screen so it shows updates
+    // Plot the alive cells
+    toPlot(alive_cells, mywin);
     wrefresh(mywin);
     sleep(1);
   }
-  // If game is not alive, end the screen
   endwin();
-  // Free the memory
-  for (int i = 0; i < msizex; i++){
-    free(matrix[i]);
-  }
-  free(matrix);
   return 0;
 }
   

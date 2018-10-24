@@ -1,3 +1,3 @@
-#include "cellstruct.h"
+#include "database.h"
 
-void config_ini(myCell **, int, int);
+void config_ini(tCell *, int, int);

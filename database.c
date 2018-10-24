@@ -1,5 +1,3 @@
-
-
 #include "database.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -145,7 +143,7 @@ void insertCell(int x, int y, bool alive, tCell *a){
     }
 
     /* CASE 3:
-       The new cell is to be put in the next column, but its why coordinate is lower than
+       The new cell is to be put in the next column, but its y coordinate is lower than
        the top cell in that column. We rearrange the pointers so as to put the new cell at
        the top of the column followed in the y-axis by the former top cell.
     */    
@@ -249,7 +247,7 @@ void deleteDeadCells(tCell *candidates){
         else if(candidates->neighbours < 2 || candidates->neighbours > 3)candidates->alive = 0;
     }
    
-    // Move move along the whole database first in the y, then in the x 
+    // Move along the whole database first in the y, then in the x 
     if(candidates->childy != NULL){
         // FEED FORWARD:
         deleteDeadCells(candidates->childy);
