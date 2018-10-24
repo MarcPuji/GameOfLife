@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "Diehard_insert.h"
 #include "database.h"
 
 void Diehard_insert (int locationX, int locationY, tCell *a){
