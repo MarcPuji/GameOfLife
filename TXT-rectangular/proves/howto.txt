@@ -1,0 +1,12 @@
+To compile:
+	Make sure you have gcc installed
+
+	Being inside this directory with your terminal write:
+
+	gcc -o prova prova.c -lncurses
+
+	This means that:
+		
+		We are compiling prova.c with the gcc compiler
+		The output (-o) executable will be named prova
+		We need to include dependencies with the library 			ncurses (-lncurses)
