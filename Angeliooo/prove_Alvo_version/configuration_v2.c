@@ -11,13 +11,14 @@
 #include "Acorn_insert.h"
 #include "database.h"
 
-unsigned int confs;
+int confs;
 
 void configuration_v2(int msizex, int msizey, tCell *a){
 
-  printf("Welcome to GameOfLife\n");
-  printf("Enter number of configurations\n");
-  scanf("%u", &confs);
+  printf("Welcome to GameOfLife\r\n");
+  printf("Enter number of configurations\r\n");
+  scanf("%i", &confs);
+  printf("%i configurations selected\r\n",confs);
 
   int loc_config_x[confs],loc_config_y[confs],configType[confs];
 
@@ -31,42 +32,42 @@ void configuration_v2(int msizex, int msizey, tCell *a){
   for (int i = 0; i < confs; i++){
 
     while (configType[i]!=1 && configType[i]!=2 && configType[i]!=3){
-      printf("Select configuration to prove (1:R-pentomino, 2:Diehard and 3:Acorn) for configuration %i\n",i+1);
-      scanf("%u", &configType[i]);
+      printf("Select configuration to prove (1:R-pentomino, 2:Diehard and 3:Acorn) for configuration %i\r\n",i+1);
+      scanf("%i", &configType[i]);
 
-      if (configType[i]!=1 && configType[i]!=2 && configType[i]!=3) printf("error: Configuration not found\n");
-      else printf("configuration found\n");
+      if (configType[i]!=1 && configType[i]!=2 && configType[i]!=3) printf("error: Configuration not found\r\n");
+      else printf("configuration found\r\n");
     }
 
     if (configType[i]==1){
-      printf("R-pentomino selected for configuration %i\n",i+1);
+      printf("R-pentomino selected for configuration %i\r\n",i+1);
       while ((loc_config_x[i]<0 || loc_config_x[i]+4>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)){
-        printf("Enter location R-pentomino config %i upper left cell in x(columns) and y(rows)\n",i+1);
-        scanf("%u %u", &loc_config_x[i], &loc_config_y[i]);
-        if ((loc_config_x[i]<0 || loc_config_x[i]+4>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)) printf("error: Out of screen\n");
-        else printf("location accepted\n");
+        printf("Enter location R-pentomino config %i upper left cell in x(columns) and y(rows)\r\n",i+1);
+        scanf("%i %i", &loc_config_x[i], &loc_config_y[i]);
+        if ((loc_config_x[i]<0 || loc_config_x[i]+4>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)) printf("error: Out of screen\r\n");
+        else printf("location accepted: x=%i y=%i\r\n",loc_config_x[i],loc_config_y[i]);
       }
       R_pentomino_insert(loc_config_x[i],loc_config_y[i],a); //a is a type tCell pointer
     }
 
     else if (configType[i]==2){
-      printf("Diehard selected for configuration %i\n",i+1);
+      printf("Diehard selected for configuration %i\r\n",i+1);
       while ((loc_config_x[i]<0 || loc_config_x[i]+9>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)){
-        printf("Enter location Diehard config %i upper left cell in x(columns) and y(rows)\n",i+1);
-        scanf("%u %u", &loc_config_x[i], &loc_config_y[i]);
-        if ((loc_config_x[i]<0 || loc_config_x[i]+9>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)) printf("error: Out of screen\n");
-        else printf("location accepted\n");
+        printf("Enter location Diehard config %i upper left cell in x(columns) and y(rows)\r\n",i+1);
+        scanf("%i %i", &loc_config_x[i], &loc_config_y[i]);
+        if ((loc_config_x[i]<0 || loc_config_x[i]+9>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)) printf("error: Out of screen\r\n");
+        else printf("location accepted: x=%i y=%i\r\n",loc_config_x[i],loc_config_y[i]);
       }
       Diehard_insert(loc_config_x[i],loc_config_y[i],a); //a is a type tCell pointer
     }
 
     else if (configType[i]==3){
-      printf("Acorn selected for configuration %i\n",i+1);
+      printf("Acorn selected for configuration %i\r\n",i+1);
       while ((loc_config_x[i]<0 || loc_config_x[i]+8>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)){
-        printf("Enter location Acorn config %i upper left cell in x(columns) and y(rows)\n",i+1);
-        scanf("%u %u", &loc_config_x[i], &loc_config_y[i]);
-        if ((loc_config_x[i]<0 || loc_config_x[i]+8>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)) printf("error: Out of screen\n");
-        else printf("location accepted\n");
+        printf("Enter location Acorn config %i upper left cell in x(columns) and y(rows)\r\n",i+1);
+        scanf("%i %i", &loc_config_x[i], &loc_config_y[i]);
+        if ((loc_config_x[i]<0 || loc_config_x[i]+8>msizex)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey)) printf("error: Out of screen\r\n");
+        else printf("location accepted: x=%i y=%i\r\n",loc_config_x[i],loc_config_y[i]);
       }
       Acorn_insert(loc_config_x[i],loc_config_y[i],a); //a is a type tCell pointer
     }

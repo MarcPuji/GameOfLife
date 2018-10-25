@@ -11,12 +11,12 @@
 #include "Acorn_insert.h"
 #include "database.h"
 
-unsigned int confs;
+int confs;
 
 void configuration_v2(int msizex, int msizey, tCell *a){
 
-  printf("Welcome to GameOfLife\n");
-  printf("Enter number of configurations\n");
+  printf("Welcome to GameOfLife");
+  printf("Enter number of configurations");
   scanf("%u", &confs);
 
   int loc_config_x[confs],loc_config_y[confs],configType[confs];
