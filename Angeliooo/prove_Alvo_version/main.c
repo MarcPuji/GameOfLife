@@ -53,7 +53,7 @@ int main(){
     // Plot the alive cells
     toPlot(alive_cells, mywin);
     wrefresh(mywin);
-    //sleep(1);
+    sleep(1);
   }
   endwin();
   return 0;
