@@ -10,6 +10,15 @@ main.o: main.c $(DEPS)
 configuration_v2.o: configuration_v2.c database.h R_pentomino_insert.h Diehard_insert.h Acorn_insert.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
+R_pentomino_insert.o: R_pentomino_insert.c database.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+Diehard_insert.o: Diehard_insert.c database.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+Acorn_insert.o: Acorn_insert.c database.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
 plotter.o: plotter.c database.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
