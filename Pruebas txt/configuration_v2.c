@@ -14,7 +14,7 @@
 unsigned int confs;
 
 void configuration_v2(int msizex, int msizey, tCell *a){
-//Opening and reading the .txt file from where the data will be obtained. Also variable declaration. Return -1 in case of file not found or wrong name.
+//Opening and reading the .txt file from where the data will be obtained. Also variable declaration. 
 	FILE* miarchivo=NULL;
 	char* nombrearchivo = "structures.txt";
 	char lectura_r[80];
