@@ -33,25 +33,36 @@ void configuration_v2(int msizex, int msizey, tCell *a){
 	printf("Number of confg. of R-pentomino: %i\n",numero_r);
 	int loc_config_x_r[numero_r];
 	int loc_config_y_r[numero_r];
-
+	int cont_r;
 	for(int i=0;i<numero_r;i++){
+		cont_r = i+1;
 		fscanf(miarchivo,"%i",&loc_config_x_r[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_r[i]);
 		//printf("col %i fil %i\n",loc_config_x_r[i],loc_config_y_r[i]);
+		if(((loc_config_x_r[i]+4)>msizex) || (loc_config_x_r[i]<1) || ((loc_config_y_r[i]+4)>msizey) || (loc_config_y_r[i]<1)){
+		printf("Error: In R-pentomino, the %iº coordinates are not allowed\n",cont_r);
+		}else{
 		R_pentomino_insert(loc_config_x_r[i],loc_config_y_r[i],a);
-	}	
+	}
+	}
 //Diehard
 	fscanf(miarchivo,"%s",&lectura_d);
 	fscanf(miarchivo,"%i",&numero_d);
 	printf("Number of confg. of Diehard: %i\n",numero_d);
 	int loc_config_x_d[numero_d];
 	int loc_config_y_d[numero_d];
+	int cont_d;
 
 	for(int i=0;i<numero_d;i++){
+		cont_d = i+1;
 		fscanf(miarchivo,"%i",&loc_config_x_d[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_d[i]);
 		//printf("col %i fil %i\n",loc_config_x_d[i],loc_config_y_d[i]);
+		if(((loc_config_x_d[i]+4)>msizex) || (loc_config_x_d[i]<1) || ((loc_config_y_d[i]+4)>msizey) || (loc_config_y_d[i]<1)){
+		printf("Error: In Diehard, the %iº coordinates are not allowed\n",cont_d);
+		}else{
       		Diehard_insert(loc_config_x_d[i],loc_config_y_d[i],a); 
+	}
 	}
 //Acorn
 	fscanf(miarchivo,"%s",&lectura_a);
@@ -59,12 +70,18 @@ void configuration_v2(int msizex, int msizey, tCell *a){
 	printf("Number of confg. of Diehard: %i\n",numero_a);
 	int loc_config_x_a[numero_a];
 	int loc_config_y_a[numero_a];
-
+	int cont_a;
+	
 	for(int i=0;i<numero_a;i++){
+		cont_a = i+1;
 		fscanf(miarchivo,"%i",&loc_config_x_a[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_a[i]);
 		//printf("col %i fil %i\n",loc_config_x_a[i],loc_config_y_a[i]);
+		if(((loc_config_x_a[i]+4)>msizex) || (loc_config_x_a[i]<1) || ((loc_config_y_a[i]+4)>msizey) || (loc_config_y_a[i]<1)){
+		printf("Error: In Acorn, the %iº coordinates are not allowed\n",cont_a);
+		}else{
       		Acorn_insert(loc_config_x_a[i],loc_config_y_a[i],a); 
+	}
 	}
   return;
 }

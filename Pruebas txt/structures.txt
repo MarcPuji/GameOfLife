@@ -1,9 +1,7 @@
-Number_Rpentomino 3
-6 6
+Number_Rpentomino 1
 1 1
-11 11
 Number_Diehard 1
-20 20
+7 7
 Number_Acorn 1
-30 30
+15 15
 
