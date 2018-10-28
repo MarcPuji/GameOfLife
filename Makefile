@@ -13,8 +13,8 @@ config_ini.o: config_ini.c cellstruct.h
 updater.o: updater.c cellstruct.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-GOF: $(OBJ) $(DEPS)
+gameoflife: $(OBJ) $(DEPS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(CFLAGS)
 
 clean:
-	rm -f $(OBJ) GOF 
+	rm -f $(OBJ) gameoflife 

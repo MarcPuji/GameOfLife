@@ -5,7 +5,7 @@
 #include "cellstruct.h"
 
 void neighbours(myCell ** matrix, int msizex, int msizey){
-
+  // Count the number of neighbours for each cell
   for (int i = 0; i < msizex; i++){
     for (int j = 0; j < msizey; j++){
       matrix[i][j].neighbours = 0;
@@ -45,38 +45,20 @@ void neighbours(myCell ** matrix, int msizex, int msizey){
 }
 
 void plotter(int x, int y, int cell_status, WINDOW * mywin){
-
+  // Plot the alive cells
   if(cell_status == 1){
     mvwaddch(mywin, y, x, ACS_CKBOARD);
   }
 }
 
-bool updater(myCell ** matrix, int msizex, int msizey, WINDOW * mywin){ // Function is recieving the matrix pointer and updating its content
-
-  bool alive = false;
-
+void updater(myCell ** matrix, int msizex, int msizey, WINDOW * mywin, int ** LUT){ // Function is recieving the matrix pointer and updating its content
+  // Update the cells status
   for (int i = 0; i < msizex; i++){
     for (int j = 0; j < msizey; j++){
-
-      if (matrix[i][j].alive == 1){ // If the cell is alive
-        if (matrix[i][j].neighbours < 2 || matrix[i][j].neighbours > 3){ // It dies by under- or over- population
-          matrix[i][j].alive = 0;
-        }
-        else{
-          alive = true;
-        }
-      }
-      else{ // If the cell is dead
-        if (matrix[i][j].neighbours == 3){ // It becomes alive by reproduction
-          matrix[i][j].alive = 1;
-          alive = true;
-        }
-      }
-
+      // Using the Look-Up-Table
+      matrix[i][j].alive = LUT[matrix[i][j].alive][matrix[i][j].neighbours];
       // Afer updating the cell status, plot them
       plotter(matrix[i][j].pos_x, matrix[i][j].pos_y, matrix[i][j].alive, mywin);
     }
   }
-
-  return alive;
 }
