@@ -1,0 +1,6 @@
+Diehard 1
+5 5
+Acorn 1
+10 10
+R_pentomino 1
+15 15
