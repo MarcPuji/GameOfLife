@@ -1,8 +1,8 @@
-Number_Rpentomino 2
+R_pentomino 2
 1 1
 1 10
-Number_Diehard 1
+Diehard 1
 7 7
-Number_Acorn 1
+Acorn 1
 15 15
 

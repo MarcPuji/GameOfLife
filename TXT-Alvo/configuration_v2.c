@@ -15,19 +15,33 @@ void configuration_v2(int msizex, int msizey, tCell *a){
 //Opening and reading the .txt file from where the data will be obtained. Also variable declaration. 
 	FILE* miarchivo=NULL;
 	char* nombrearchivo = "structures.txt";
-	char lectura_r[80];   //strings for reading the structure names
+	char lectura[80];   //strings for reading the structure names
 	char lectura_d[80];
 	char lectura_a[80];	
 	int numero_r;    //Int for reading the number of each structure
 	int numero_d;
 	int numero_a;
+	int n_case;
+	int n_struct;
 	miarchivo = fopen(nombrearchivo,"r");	//Opening the txt file
-
+	
 //Scanning the data from .txt file.
 //The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
 
-//R-pentomino
-	fscanf(miarchivo,"%s",&lectura_r);	
+for(int j=0;j<n_struct;j++){
+
+	fscanf(miarchivo,"%s",&lectura);
+	if(lectura=="R_pentomino"){
+		n_case = 1;
+	}else if(lectura=="Diehard"){
+		n_case = 2;
+	}else if(lectura=="Acorn"){
+		n_case = 3;
+	}
+
+	switch(n_case){
+
+	case '1':
 	fscanf(miarchivo,"%i",&numero_r);
 	printf("Number of confg. of R-pentomino: %i\n",numero_r);
 //Defining locations array and counter
@@ -46,12 +60,14 @@ void configuration_v2(int msizex, int msizey, tCell *a){
 		R_pentomino_insert(loc_config_x_r[i],loc_config_y_r[i],a);
 	}
 	}
+	break;
 
 //Scanning the data from .txt file.
 //The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
 
 //Diehard
-	fscanf(miarchivo,"%s",&lectura_d);
+	//fscanf(miarchivo,"%s",&lectura_d);
+	case '2':
 	fscanf(miarchivo,"%i",&numero_d);
 	printf("Number of confg. of Diehard: %i\n",numero_d);
 	//Defining locations array and counter
@@ -70,12 +86,14 @@ void configuration_v2(int msizex, int msizey, tCell *a){
       		Diehard_insert(loc_config_x_d[i],loc_config_y_d[i],a); 
 	}
 	}
+	break;
 //Scanning the data from .txt file.
 //The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
 
 //Acorn
 	//Scanning the data from .txt file.
-	fscanf(miarchivo,"%s",&lectura_a);
+	//fscanf(miarchivo,"%s",&lectura_a);
+	case '3':
 	fscanf(miarchivo,"%i",&numero_a);
 	printf("Number of confg. of Diehard: %i\n",numero_a);
 	//Defining locations array and counter
@@ -94,7 +112,12 @@ void configuration_v2(int msizex, int msizey, tCell *a){
       		Acorn_insert(loc_config_x_a[i],loc_config_y_a[i],a); 
 	}
 	}
+	break;
 	
+	default:
+		printf("%s: Structure not found or wrong name\n",lectura);
+	}
+	}
 	//Once everything have finsihed, the txt file is closed
 	fclose(miarchivo);
 	
