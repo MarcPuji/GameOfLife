@@ -5,9 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "include/R_pentomino_insert.h"
-#include "include/Diehard_insert.h"
-#include "include/Acorn_insert.h"
+#include "include/figure_insert.h"
 #include "include/database.h"
 #include "configuration_v2.h"
 

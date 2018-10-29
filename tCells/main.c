@@ -5,7 +5,22 @@
 
 #include "include/database.h"
 #include "configuration_v2.h"
-#include "plotter.h"
+
+
+// Function that recursively advances through the tCell and plots the cells to the screen
+void toPlot(tCell *a, WINDOW *mywin){
+    if(a->x != -1){
+        mvwaddch(mywin, a->y, a->x, ACS_CKBOARD);
+    }// This allows us to advance through to the cells within and accross columns.
+    if(a->childy != NULL){
+        toPlot(a->childy, mywin); // advance through the column
+    }
+    if(a->childx != NULL){
+        toPlot(a->childx, mywin); // advance across columns (only possible in the top row 
+                             // for the sake of simplicity.)
+    }
+}
+
 
 int main(){
   // Initialize max screen size constants
@@ -65,6 +80,7 @@ int main(){
   }
   endwin();
 
+  free(alive_cells);
   free(LUT[0]);
   free(LUT[1]);
   free(LUT);
