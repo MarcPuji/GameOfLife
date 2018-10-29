@@ -6,9 +6,7 @@
 #include <unistd.h>
 
 #include "configuration_arr.h"
-#include "R_pentomino_insert_arr.h"
-#include "Diehard_insert_arr.h"
-#include "Acorn_insert_arr.h"
+#include "figure_insert.h"
 #include "cellstruct.h"
 
 int confs;
