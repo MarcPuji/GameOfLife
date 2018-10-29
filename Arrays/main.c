@@ -62,6 +62,8 @@ int main(){
 
   	// Main Loop
   	while (loops < 100){
+      // Hide cursor
+      curs_set(0);
   		// Clear the window before updating the image
   		wclear(mywin);
     	// Get the neighbour information of the current status
