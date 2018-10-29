@@ -57,10 +57,11 @@ int main(){
   	wrefresh(mywin); // Refresh the screen so it shows the added points
   	sleep(2);
 
-  	// Initialize a counter for the main loop
-  	int counter = 0;
+  	// Number of loops
+  	int loops = 0;
+
   	// Main Loop
-  	while (counter < 1000){
+  	while (loops < 100){
   		// Clear the window before updating the image
   		wclear(mywin);
     	// Get the neighbour information of the current status
@@ -71,7 +72,7 @@ int main(){
     	wrefresh(mywin);
     	sleep(1);
 
-    	counter += 1;
+    	loops += 1;
   	}
 
   	// End the screen

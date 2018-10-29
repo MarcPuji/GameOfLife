@@ -8,7 +8,7 @@
 #include "plotter.h"
 
 int main(){
-
+  // Initialize max screen size constants
   int msizey;
   int msizex;
 
@@ -37,7 +37,10 @@ int main(){
   wrefresh(mywin);
   sleep(2);
 
-  while (true){
+  // Number of loops
+  int loops = 0;
+
+  while (loops < 100){
     // In each timestep we have to:
     // STEP1: Look for candidates to be alive the next timestep
     tCell* candidate_cells = cellDataBase();
@@ -57,6 +60,8 @@ int main(){
     toPlot(alive_cells, mywin);
     wrefresh(mywin);
     sleep(1);
+    // Loop passed
+    loops += 1;
   }
   endwin();
 
