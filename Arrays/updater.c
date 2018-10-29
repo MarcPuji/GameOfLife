@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "cellstruct.h"
+#include "include/cellstruct.h"
 
 void neighbours(myCell ** matrix, int msizex, int msizey){
   // Count the number of neighbours for each cell

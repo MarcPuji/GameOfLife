@@ -3,8 +3,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "cellstruct.h"
-#include "config_ini.h"
+#include "include/cellstruct.h"
+#include "include/configuration_arr.h"
 #include "updater.h"
 
 
@@ -46,7 +46,7 @@ int main(){
   	}
 
   	// Let's load the initial configuration
-  	config_ini(matrix, msizex, msizey);
+  	configuration_arr(matrix, msizex, msizey);
   	// And plot the initial configuration
   	for (int i = 0; i < msizex; i++){
     	for (int j = 0; j < msizey; j++){

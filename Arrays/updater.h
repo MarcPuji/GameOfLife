@@ -1,4 +1,4 @@
-#include "cellstruct.h"
+#include "include/cellstruct.h"
 #include "ncurses.h"
 
 void neighbours(myCell **, int, int);
