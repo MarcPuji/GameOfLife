@@ -74,6 +74,5 @@ void configuration_v2(int msizex, int msizey, tCell *a){
       Acorn_insert(loc_config_x[i],loc_config_y[i],a);
     }
   }
-  Block_insert(10,10,a);
   return;
 }

@@ -56,6 +56,8 @@ int main(){
   int loops = 0;
 
   while (loops < 100){
+    // Hide cursor
+    curs_set(0);
     // In each timestep we have to:
     // STEP1: Look for candidates to be alive the next timestep
     tCell* candidate_cells = cellDataBase();
