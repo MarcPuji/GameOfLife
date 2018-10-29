@@ -240,18 +240,21 @@ Function used in order to determine if the cells in a database are alive or dead
 according to their neighbours and deletes from the database all those cells that
 result to be dead.
 */
-void deleteDeadCells(tCell *candidates){
+void deleteDeadCells(tCell *candidates, int ** LUT){
     // FEED FORWARD:
     // Check if the current cell deserves to be alive or not in the next iteration
+    //if(candidates->x != -1){
+    //    if(candidates->neighbours == 3)candidates->alive = 1;
+    //    else if(candidates->neighbours < 2 || candidates->neighbours > 3)candidates->alive = 0;
+    //}
     if(candidates->x != -1){
-        if(candidates->neighbours == 3)candidates->alive = 1;
-        else if(candidates->neighbours < 2 || candidates->neighbours > 3)candidates->alive = 0;
+        candidates->alive = LUT[candidates->alive][candidates->neighbours];
     }
    
     // Move along the whole database first in the y, then in the x 
     if(candidates->childy != NULL){
         // FEED FORWARD:
-        deleteDeadCells(candidates->childy);
+        deleteDeadCells(candidates->childy, LUT);
         // BACKTRACKING:
         /*
         Look if child in y is alive, if not we delete it and restructure the database.
@@ -269,7 +272,7 @@ void deleteDeadCells(tCell *candidates){
     }
     if(candidates->childx != NULL){
         // FEED FORWARD
-        deleteDeadCells(candidates->childx);
+        deleteDeadCells(candidates->childx, LUT);
         // BACTRACKING:
         /* 
          It is different than before in that if x-child is alive we let it be,

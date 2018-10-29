@@ -11,19 +11,19 @@ main.o: main.c plotter.h configuration_v2.h include/database.h
 configuration_v2.o: configuration_v2.c $(DEPS2)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-R_pentomino_insert.o: R_pentomino_insert.c include/database.h
+R_pentomino_insert.o: include/R_pentomino_insert.c include/database.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-Diehard_insert.o: Diehard_insert.c include/database.h
+Diehard_insert.o: include/Diehard_insert.c include/database.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-Acorn_insert.o: Acorn_insert.c include/database.h
+Acorn_insert.o: include/Acorn_insert.c include/database.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 plotter.o: plotter.c include/database.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-database.o: database.c
+database.o: include/database.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 gameoflife: $(OBJ) $(DEPS)
