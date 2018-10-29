@@ -1,7 +1,7 @@
-R_pentomino 2
+Diehard 2
 1 1
 1 10
-Diehard 1
+Rpentomino 1
 7 7
 Acorn 1
 15 15
