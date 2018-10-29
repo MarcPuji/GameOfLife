@@ -15,6 +15,7 @@ void configuration_v2(int msizex, int msizey, tCell *a){
 	FILE* miarchivo=NULL;
 	char* nombrearchivo = "structures.txt";
 	char lectura[80];   //strings for reading the structure names
+	char types[80];
 	int numero_r;    //Int for reading the number of each structure
 	int numero_d;
 	int numero_a;
@@ -23,11 +24,14 @@ void configuration_v2(int msizex, int msizey, tCell *a){
 	int numero_b;
 	int numero_re;
 	int numero_w; //This variable counts all the coordinates that have been used for a non-specified configuration
-	int n_type_struct=3;	//Defines the number of different configurations stablished in txt file
+	int n_type_struct;	//Defines the number of different configurations stablished in txt file
 	miarchivo = fopen(nombrearchivo,"r");	//Opening the txt file
 
 //Scanning the data from .txt file.
 //The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
+fscanf(miarchivo,"%s",&types);
+fscanf(miarchivo,"%i",&n_type_struct);
+printf("There are %i types of structures defined in txt file\n",n_type_struct);
 for(int j=0;j<n_type_struct;j++){
 
 //Reading the name of the strcuture
