@@ -29,4 +29,4 @@ gameoflife: $(OBJ) $(DEPS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(CFLAGS)
 
 clean:
-	rm -f $(OBJ) GOF 
+	rm -f $(OBJ) gameoflife
