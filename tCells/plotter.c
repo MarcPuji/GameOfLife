@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include <ncurses.h>
 
+#include "include/database.h"
 #include "plotter.h"
-#include "database.h"
 
 
 // Function that recursively advances through the tCell and plots the cells to the screen

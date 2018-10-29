@@ -3,9 +3,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include "config_ini.h"
+#include "include/database.h"
+#include "configuration_v2.h"
 #include "plotter.h"
-#include "database.h"
 
 int main(){
 
@@ -31,7 +31,7 @@ int main(){
   // Initialize the database
   tCell* alive_cells = cellDataBase();
   // Load the initial configuration to the database
-  config_ini(alive_cells, msizex, msizey);
+  configuration_v2(msizex, msizey,alive_cells);
   // Plot the initial configuration to the screen
   toPlot(alive_cells, mywin);
   wrefresh(mywin);

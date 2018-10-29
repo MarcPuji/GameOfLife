@@ -5,7 +5,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#include"R_pentomino_insert.h"
+#include "R_pentomino_insert.h"
 #include "database.h"
 
 void R_pentomino_insert (int locationX, int locationY, tCell *a){

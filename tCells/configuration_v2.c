@@ -5,11 +5,11 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+#include "include/R_pentomino_insert.h"
+#include "include/Diehard_insert.h"
+#include "include/Acorn_insert.h"
+#include "include/database.h"
 #include "configuration_v2.h"
-#include "R_pentomino_insert.h"
-#include "Diehard_insert.h"
-#include "Acorn_insert.h"
-#include "database.h"
 
 int confs;
 

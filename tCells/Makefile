@@ -1,16 +1,26 @@
 CC = g++
 CFLAGS = -Wall -I/usr/include/ -I.
-LDFLAGS = -lncurses 
-OBJ = main.o database.o plotter.o config_ini.o
-DEPS = database.h config_ini.h plotter.h 
+LDFLAGS = -lncurses
+OBJ = main.o database.o plotter.o configuration_v2.o R_pentomino_insert.o Diehard_insert.o Acorn_insert.o
+DEPS = plotter.h configuration_v2.h include/database.h include/R_pentomino_insert.h include/Diehard_insert.h include/Acorn_insert.h
+DEPS2 = include/database.h include/R_pentomino_insert.h include/Diehard_insert.h include/Acorn_insert.h
 
-main.o: main.c $(DEPS)
+main.o: main.c plotter.h configuration_v2.h include/database.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-config_ini.o: config_ini.c database.h 
+configuration_v2.o: configuration_v2.c $(DEPS2)
 	$(CC) $(CFLAGS) -c -o $@ $<
 
-plotter.o: plotter.c database.h
+R_pentomino_insert.o: R_pentomino_insert.c include/database.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+Diehard_insert.o: Diehard_insert.c include/database.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+Acorn_insert.o: Acorn_insert.c include/database.h
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+plotter.o: plotter.c include/database.h
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 database.o: database.c
@@ -20,4 +30,4 @@ gameoflife: $(OBJ) $(DEPS)
 	$(CC) -o $@ $^ $(LDFLAGS) $(CFLAGS)
 
 clean:
-	rm -f $(OBJ) gameoflife 
+	rm -f $(OBJ) gameoflife
