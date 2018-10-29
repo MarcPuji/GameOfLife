@@ -41,7 +41,6 @@ void config_ini(myCell ** matrix, int msizex, int msizey){ // Load the initial c
 	int numero_d;
 	int numero_a;
 	miarchivo = fopen(nombrearchivo,"r");
-	//if(miarchivo==NULL)return -1;
 
 //Scanning the data from .txt file.
 //R-pentomino
@@ -121,5 +120,7 @@ void config_ini(myCell ** matrix, int msizex, int msizey){ // Load the initial c
 		}
 		}
 	fclose(miarchivo);
+	free(FILE);
+	free(char);
   return;
 }
