@@ -21,8 +21,12 @@ void configuration_arr(myCell ** matrix, int msizex, int msizey){
 	int numero_r;    //Int for reading the number of each structure
 	int numero_d;
 	int numero_a;
+	int numero_s;
+	int numero_o;
+	int numero_b;
+	int numero_re;
 	int numero_w;
-	int n_struct=3;
+	int n_struct=7;
 	miarchivo = fopen(nombrearchivo,"r");	//Opening the txt file
 
 //Scanning the data from .txt file.
@@ -100,6 +104,98 @@ fscanf(miarchivo,"%s",&lectura);
 		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_a);
 		}else{
       		Acorn_insert_arr(loc_config_x_a[i],loc_config_y_a[i],matrix);
+	}
+	}
+
+//Spaceship
+	}else if(strcmp(lectura,"Spaceship")==0){
+	fscanf(miarchivo,"%i",&numero_s); //Reading number of configurations of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_s);
+//Defining locations array and counter
+	int loc_config_x_s[numero_s];
+	int loc_config_y_s[numero_s];
+	int cont_s;
+
+	//First it is obtanined the data from the txt file (locations 		and number of configurations). Then, it is checked if the 	locations are bounded (inside the window), and then, the 		function "struct_insert" is called.
+	for(int i=0;i<numero_s;i++){
+		cont_s = i+1;	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_s[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_s[i]);
+		if ((loc_config_x_s[i]<0 || loc_config_x_s[i]+4>msizex-1)||(loc_config_y_s[i]<0 || loc_config_y_s[i]+4>msizey-1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_s);
+		}else{
+		Spaceship_insert_arr(loc_config_x_s[i],loc_config_y_s[i],matrix);
+	}
+	}
+
+//Scanning the data from .txt file.
+//The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
+
+//Block
+	//fscanf(miarchivo,"%s",&lectura_d);
+}else if(strcmp(lectura,"Block")==0){
+	fscanf(miarchivo,"%i",&numero_b); //Reading number of configurations of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_d);
+	//Defining locations array and counter
+	int loc_config_x_b[numero_b];
+	int loc_config_y_b[numero_b];
+	int cont_b;
+
+	//First it is obtanined the data from the txt file (locations 		and number of configurations). Then, it is checked if the 	locations are bounded (inside the window), and then, the 		function "struct_insert" is called.
+	for(int i=0;i<numero_b;i++){
+		cont_b = i+1; 	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_b[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_b[i]);;
+		if ((loc_config_x_b[i]<0 || loc_config_x_b[i]+9>msizex-1)||(loc_config_y_b[i]<0 || loc_config_y_b[i]+4>msizey-1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_b);
+		}else{
+      		Block_insert_arr(loc_config_x_b[i],loc_config_y_b[i],matrix);
+	}
+	}
+
+//Rectangle
+	//Scanning the data from .txt file.
+	//fscanf(miarchivo,"%s",&lectura_a);
+}else if(strcmp(lectura,"Rectangle")==0){
+	fscanf(miarchivo,"%i",&numero_re); //Reading number of configurations of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_r);
+	//Defining locations array and counter
+	int loc_config_x_re[numero_re];
+	int loc_config_y_re[numero_re];
+	int cont_re;
+
+	//First it is obtanined the data from the txt file (locations and number of configurations). Then, it is checked if the locations are bounded (inside the window), and then, the function "struct_insert" is called.
+	for(int i=0;i<numero_re;i++){
+		cont_re = i+1;	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_re[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_re[i]);
+		if ((loc_config_x_re[i]<0 || loc_config_x_re[i]+8>msizex-1)||(loc_config_y_re[i]<0 || loc_config_y_re[i]+4>msizey-1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_re);
+		}else{
+      		Rectangle_insert_arr(loc_config_x_re[i],loc_config_y_re[i],matrix);
+	}
+	}
+
+//Hat
+	//Scanning the data from .txt file.
+	//fscanf(miarchivo,"%s",&lectura_a);
+}else if(strcmp(lectura,"Hat")==0){
+	fscanf(miarchivo,"%i",&numero_o); //Reading number of configurations of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_o);
+	//Defining locations array and counter
+	int loc_config_x_o[numero_o];
+	int loc_config_y_o[numero_o];
+	int cont_o;
+
+	//First it is obtanined the data from the txt file (locations and number of configurations). Then, it is checked if the locations are bounded (inside the window), and then, the function "struct_insert" is called.
+	for(int i=0;i<numero_o;i++){
+		cont_o = i+1;	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_o[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_o[i]);
+		if ((loc_config_x_o[i]<0 || loc_config_x_o[i]+8>msizex-1)||(loc_config_y_o[i]<0 || loc_config_y_o[i]+4>msizey-1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_o);
+		}else{
+      		Hat_insert_arr(loc_config_x_o[i],loc_config_y_o[i],matrix);
 	}
 	}
 
