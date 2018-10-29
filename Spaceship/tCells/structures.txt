@@ -2,7 +2,7 @@ Spaceship 1
 21 5
 Hat 1
 11 7
-Square 2
+Block 2
 2 6
 35 4
 Rectangle 1
