@@ -1,3 +1,34 @@
+/*
+TEAM-WORK STRATEGY:
+
+The work has been divided in the following parts:
+- Coder 1: He was charged with getting to know and work with the performance profiling tools.
+           Then he did the performance tests. He contributed to make the code that charges the
+           predefined cell initial configurations into the system from a .txt file.
+
+- Coder 2: He was the main person in charge of coding the predefined configurations of cells
+           so that they can be put in any place on the 2D plane. Then, he coded a way to insert
+           the cell initial configurations from the terminal shell.
+
+- Coder 3: He was initially in charge of designing and code the data structure. A data structure
+           that was required to optimize the memory used (that was our priority as in embedded systems
+           that's the main ressource limitation) while using as little time as possible. Then, he coded
+           the engine of the game, meaning the functions needed to get the alive cells from timestep t+1,
+           given the alive cells from timestep t. Then, he helped rearranging the code and check and correct
+           memory leakage issues.
+
+- Coder 4: He was in charge of building the main file using the initilalization functions to give the initial
+           conditions of the cell configurations in the 2D plane, then using the engine functions in order to
+           advance and obtain the new alive cells at every timestep; all this while plotting the alive cells
+           across every timestep. Then, he implemented the vanilla version of the Game of Life using 2D arrays
+           containing the whole 2D plane of dead and alive cells. This implementation was done in order to be
+           able to compare our memory optimal version of the Game of Life with the vanilla version that we define
+           as the Control Version.
+           
+*/
+
+
+
 // Author: Coder 4
 
 #include <ncurses.h>
