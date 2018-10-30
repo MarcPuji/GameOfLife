@@ -15,9 +15,11 @@ Both of them use TXT files to load the initial configuration with name "structur
 The current "structures.txt" loads the infinite glider initial configuration.
 
 In each directory you will find a folder named structures with different intial configurations,
-the three main configurations that we were asked and two random configurations that were used
-to make the performance check.
+the three main configurations that we were asked, the infinite glider and two random configurations 
+that were used to make the performance check.
 You can load those configurations by replacing them with the current "structures.txt" and renaming it.
+There is also a folder called terminal shell configuration, where there are the codes used at first
+to prove the three main structures by introducing the initial configuration through the terminal.
 
 To compile the code you can use:
 make
