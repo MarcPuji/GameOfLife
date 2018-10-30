@@ -1,0 +1,11 @@
+Types 4
+
+Spaceship 1
+21 5
+Hat 1
+11 7
+Block 2
+2 6
+36 4
+Rectangle 1
+18 6
