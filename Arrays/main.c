@@ -64,8 +64,8 @@ int main(){
 
   	// Main Loop
   	while (loops < 1000){
-      // Hide cursor
-      curs_set(0);
+      	// Hide cursor
+      	curs_set(0);
   		// Clear the window before updating the image
   		wclear(mywin);
     	// Get the neighbour information of the current status
@@ -86,7 +86,7 @@ int main(){
     	free(matrix[i]);
   	}
   	free(matrix);
-
+  	// Free the LUT memory allocation
   	free(LUT[0]);
   	free(LUT[1]);
   	free(LUT);
