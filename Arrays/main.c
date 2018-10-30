@@ -1,3 +1,5 @@
+// Author: Coder 4
+
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -24,7 +26,7 @@ int main(){
 
   	// Initialize the LUTs used to update the cells status
   	int ** LUT = (int **) malloc(2*sizeof(int *));
-	LUT[0] = (int *) malloc(9*sizeof(int));
+    LUT[0] = (int *) malloc(9*sizeof(int));
   	LUT[1] = (int *) malloc(9*sizeof(int));
 
   	LUT[0][3] = 1; 	// Dead cells with 3 neighbours become alive
@@ -55,13 +57,13 @@ int main(){
   	}	
 
   	wrefresh(mywin); // Refresh the screen so it shows the added points
-  	sleep(2);
+  	usleep(200000);
 
   	// Number of loops
   	int loops = 0;
 
   	// Main Loop
-  	while (loops < 100){
+  	while (loops < 1000){
       // Hide cursor
       curs_set(0);
   		// Clear the window before updating the image
@@ -72,8 +74,8 @@ int main(){
     	updater(matrix, msizex, msizey, mywin, LUT);
     	// Refresh the screen so it shows updates
     	wrefresh(mywin);
-    	sleep(1);
-
+    	usleep(100000);
+    	// New Loop
     	loops += 1;
   	}
 

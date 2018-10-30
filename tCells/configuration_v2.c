@@ -1,78 +1,152 @@
-//Function for requesting the initial configurations to the user through terminal
-/*Info needed: # of conf, type of config (R-pentomino, Diehard and Acorn), location of the upper left cell*/
+// Author: Coder 1
+
+//Function for requesting the configuration to the user
+/*Info needed: # of conf, type of config (R-pentomino, Diehard and Acorn), location of the upper left cell. All specified in the 'structures.txt' file*/
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 
+#include "configuration_v2.h"
 #include "include/figure_insert.h"
 #include "include/database.h"
-#include "configuration_v2.h"
 
-int confs;
-
-//msizex and msizey are the display window dimensions and *a is a pointer of tCell type defined in the main program
 void configuration_v2(int msizex, int msizey, tCell *a){
+//Opening and reading the .txt file from where the data will be obtained. Also variable declaration.
+	FILE* miarchivo=NULL;
+	char* nombrearchivo = "structures.txt";
+	char lectura[80];   //strings for reading the structure names
+	int numero_r;    //Int for reading the number of each structure
+	int numero_d;
+	int numero_a;
+	int numero_o;
+	int numero_w;
+	int n_struct=4;
+	miarchivo = fopen(nombrearchivo,"r");	//Opening the txt file
 
-  //To request and read the number of configurations to prove
-  printf("Welcome to GameOfLife\r\n");
-  printf("Enter number of configurations\r\n");
-  scanf("%i", &confs);
-  printf("%i configurations selected\r\n",confs);
+//Scanning the data from .txt file.
+//The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
+for(int j=0;j<n_struct;j++){
 
-  int loc_config_x[confs],loc_config_y[confs],configType[confs];
+//Reading the name of the strcuture
+fscanf(miarchivo,"%s",lectura);
 
-  //Initialize variables (to enter the while loops)
-  //Assigned configType 1 for R-pentomino, 2 for Diehard and 3 for Acorn
-  for (int k = 0; k < confs; k++){
-    loc_config_x[k]=-1;   //out of screen
-    loc_config_y[k]=-1;   //out of screen
-    configType[k]=4;      //none of the configurations
-  }
+//Spaceship
+	if(strcmp(lectura,"Spaceship")==0){
+	fscanf(miarchivo,"%i",&numero_r); //Reading number of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_r);
+//Defining locations array and counter
+	int loc_config_x_r[numero_r];
+	int loc_config_y_r[numero_r];
+	int cont_r;
 
-  for (int i = 0; i < confs; i++){  //For all configurations
+	//First it is obtanined the data from the txt file (locations 		and number of configurations). Then, it is checked if the 	locations are bounded (inside the window), and then, the 		function "struct_insert" is called.
+	for(int i=0;i<numero_r;i++){
+		cont_r = i+1;	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_r[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_r[i]);
+		if(((loc_config_x_r[i]+4)>msizex) || (loc_config_x_r[i]<1) || ((loc_config_y_r[i]+4)>msizey) || (loc_config_y_r[i]<1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_r);
+		}else{
+		Spaceship_insert(loc_config_x_r[i],loc_config_y_r[i],a);
+	}
+	}
+//Scanning the data from .txt file.
+//The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
 
-    while (configType[i]!=1 && configType[i]!=2 && configType[i]!=3){ //requests for a configuration until a correct number is insert
-      printf("Select configuration to prove (1:R-pentomino, 2:Diehard and 3:Acorn) for configuration %i\r\n",i+1);
-      scanf("%i", &configType[i]);
+//Hat
+	//fscanf(miarchivo,"%s",&lectura_d);
+}else if(strcmp(lectura,"Hat")==0){
+	fscanf(miarchivo,"%i",&numero_d); //Reading number of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_d);
+	//Defining locations array and counter
+	int loc_config_x_d[numero_d];
+	int loc_config_y_d[numero_d];
+	int cont_d;
 
-      if (configType[i]!=1 && configType[i]!=2 && configType[i]!=3) printf("error: Configuration not found\r\n");
-      else printf("configuration found\r\n");
-    }
-    //Checking for each type, if the location is inside the window
-    if (configType[i]==1){
-      printf("R-pentomino selected for configuration %i\r\n",i+1);
-      while ((loc_config_x[i]<0 || loc_config_x[i]+4>msizex-1)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey-1)){   //requests a location until the location inserted is inside the window
-        //loc_config_x[i]+4 is the upper left cell. msizex-1 is the maximum column allowed according to the size
-        printf("Enter location R-pentomino config %i upper left cell in x(columns) and y(rows)\r\n",i+1);
-        scanf("%i %i", &loc_config_x[i], &loc_config_y[i]);
-        if ((loc_config_x[i]<0 || loc_config_x[i]+4>msizex-1)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey-1)) printf("error: Out of screen\r\n");
-        else printf("location accepted: x=%i y=%i\r\n",loc_config_x[i],loc_config_y[i]);
-      }
-      R_pentomino_insert(loc_config_x[i],loc_config_y[i],a);    //function to insert the R-pentomino in the database
-    }
+	//First it is obtanined the data from the txt file (locations 		and number of configurations). Then, it is checked if the 	locations are bounded (inside the window), and then, the 		function "struct_insert" is called.
+	for(int i=0;i<numero_d;i++){
+		cont_d = i+1; 	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_d[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_d[i]);;
+		if(((loc_config_x_d[i]+4)>msizex) || (loc_config_x_d[i]<1) || ((loc_config_y_d[i]+4)>msizey) || (loc_config_y_d[i]<1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_d);
+		}else{
+      		Hat_insert(loc_config_x_d[i],loc_config_y_d[i],a);
+	}
+	}
 
-    else if (configType[i]==2){
-      printf("Diehard selected for configuration %i\r\n",i+1);
-      while ((loc_config_x[i]<0 || loc_config_x[i]+9>msizex-1)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey-1)){
-        printf("Enter location Diehard config %i upper left cell in x(columns) and y(rows)\r\n",i+1);
-        scanf("%i %i", &loc_config_x[i], &loc_config_y[i]);
-        if ((loc_config_x[i]<0 || loc_config_x[i]+9>msizex-1)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey-1)) printf("error: Out of screen\r\n");
-        else printf("location accepted: x=%i y=%i\r\n",loc_config_x[i],loc_config_y[i]);
-      }
-      Diehard_insert(loc_config_x[i],loc_config_y[i],a);
-    }
+//Scanning the data from .txt file.
+//The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
 
-    else if (configType[i]==3){
-      printf("Acorn selected for configuration %i\r\n",i+1);
-      while ((loc_config_x[i]<0 || loc_config_x[i]+8>msizex-1)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey-1)){
-        printf("Enter location Acorn config %i upper left cell in x(columns) and y(rows)\r\n",i+1);
-        scanf("%i %i", &loc_config_x[i], &loc_config_y[i]);
-        if ((loc_config_x[i]<0 || loc_config_x[i]+8>msizex-1)||(loc_config_y[i]<0 || loc_config_y[i]+4>msizey-1)) printf("error: Out of screen\r\n");
-        else printf("location accepted: x=%i y=%i\r\n",loc_config_x[i],loc_config_y[i]);
-      }
-      Acorn_insert(loc_config_x[i],loc_config_y[i],a);
-    }
-  }
+//Block
+	//Scanning the data from .txt file.
+	//fscanf(miarchivo,"%s",&lectura_a);
+}else if(strcmp(lectura,"Block")==0){
+	fscanf(miarchivo,"%i",&numero_a); //Reading number of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_a);
+	//Defining locations array and counter
+	int loc_config_x_a[numero_a];
+	int loc_config_y_a[numero_a];
+	int cont_a;
+
+	//First it is obtanined the data from the txt file (locations 		and number of configurations). Then, it is checked if the 	locations are bounded (inside the window), and then, the 		function "struct_insert" is called.
+	for(int i=0;i<numero_a;i++){
+		cont_a = i+1;	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_a[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_a[i]);
+		if(((loc_config_x_a[i]+4)>msizex) || (loc_config_x_a[i]<1) || ((loc_config_y_a[i]+4)>msizey) || (loc_config_y_a[i]<1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_a);
+		}else{
+      		Block_insert(loc_config_x_a[i],loc_config_y_a[i],a);
+	}
+	}
+
+//Rectangle
+	//Scanning the data from .txt file.
+	//fscanf(miarchivo,"%s",&lectura_a);
+}else if(strcmp(lectura,"Rectangle")==0){
+	fscanf(miarchivo,"%i",&numero_o); //Reading number of this structure
+	printf("Number of confg. of %s: %i\n",lectura,numero_o);
+	//Defining locations array and counter
+	int loc_config_x_o[numero_o];
+	int loc_config_y_o[numero_o];
+	int cont_o;
+
+	//First it is obtanined the data from the txt file (locations 		and number of configurations). Then, it is checked if the 	locations are bounded (inside the window), and then, the 		function "struct_insert" is called.
+	for(int i=0;i<numero_o;i++){
+		cont_o = i+1;	//The locations are counted in order to notice to the user in case there were any wrong coordinate.
+		fscanf(miarchivo,"%i",&loc_config_x_o[i]);
+		fscanf(miarchivo,"%i",&loc_config_y_o[i]);
+		if(((loc_config_x_o[i]+4)>msizex) || (loc_config_x_o[i]<1) || ((loc_config_y_o[i]+4)>msizey) || (loc_config_y_o[i]<1)){
+		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_o);
+		}else{
+      		Rectangle_insert(loc_config_x_o[i],loc_config_y_o[i],a);
+	}
+	}
+
+
+	}else{
+		printf("%s: Structure not found or wrong name\n",lectura);
+		fscanf(miarchivo,"%i",&numero_w);
+	//Defining locations array and counter
+		int loc_config_x_w[numero_w];
+		int loc_config_y_w[numero_w];
+
+		//First it is obtanined the data from the txt file (locations 		and number of configurations). Then, it is checked if the 	locations are bounded (inside the window), and then, the 		function "struct_insert" is called.
+		for(int i=0;i<numero_w;i++){
+			fscanf(miarchivo,"%i",&loc_config_x_w[i]);
+			fscanf(miarchivo,"%i",&loc_config_y_w[i]);
+		}
+		}
+	}
+
+	//Once everything have finsihed, the txt file is closed
+	fclose(miarchivo);
+
   return;
+	//Freeing the pointers
+	free(miarchivo);
+	free(nombrearchivo);
 }
