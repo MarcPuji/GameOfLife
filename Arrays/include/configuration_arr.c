@@ -164,7 +164,7 @@ fscanf(miarchivo,"%s",lectura);
 	//fscanf(miarchivo,"%s",&lectura_a);
 }else if(strcmp(lectura,"Rectangle")==0){
 	fscanf(miarchivo,"%i",&numero_re); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_r);
+	printf("Number of confg. of %s: %i\n",lectura,numero_re);
 	//Defining locations array and counter
 	int loc_config_x_re[numero_re];
 	int loc_config_y_re[numero_re];
