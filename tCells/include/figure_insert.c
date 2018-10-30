@@ -1,3 +1,5 @@
+// Author: Coder 2
+
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>

@@ -1,3 +1,5 @@
+// Author: Coder 1
+
 //Function for requesting the configuration to the user
 /*Info needed: # of conf, type of config (R-pentomino, Diehard and Acorn), location of the upper left cell. All specified in the 'structures.txt' file*/
 #include <ncurses.h>

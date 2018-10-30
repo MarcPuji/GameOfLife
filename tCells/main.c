@@ -1,3 +1,5 @@
+// Author: Coder 4
+
 #include <ncurses.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -55,7 +57,7 @@ int main(){
   // Number of loops
   int loops = 0;
 
-  while (loops < 100){
+  while (loops < 1000){
     // Hide cursor
     curs_set(0);
     // In each timestep we have to:
@@ -75,9 +77,10 @@ int main(){
   	wclear(mywin);
     // Plot the alive cells
     toPlot(alive_cells, mywin);
+    // Refresh the screen so it shows updates
     wrefresh(mywin);
     usleep(100000);
-    // Loop passed
+    // New Loop
     loops += 1;
   }
   endwin();

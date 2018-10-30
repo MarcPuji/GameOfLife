@@ -1,3 +1,5 @@
+// Author: Coder 1
+
 //Function for requesting the initial configurations to the user through terminal
 /*Info needed: # of conf, type of config (R-pentomino, Diehard and Acorn), location of the upper left cell*/
 #include <ncurses.h>
