@@ -1,0 +1,9 @@
+Types 3
+
+Diehard 1
+1 1
+Acorn 2
+10 10
+5 5
+Spaceship 1
+15 15

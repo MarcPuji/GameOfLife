@@ -1,0 +1,10 @@
+Types 3
+
+Spaceship 1
+21 5
+Hat 1
+11 7
+Acorn 2
+2 6
+36 4
+
