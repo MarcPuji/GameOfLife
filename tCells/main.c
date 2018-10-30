@@ -82,8 +82,10 @@ int main(){
   	configuration_v2(msizex, msizey,alive_cells);
   	// Plot the initial configuration to the screen
   	toPlot(alive_cells, mywin);
+  	// Refresh the screen so it shows the added points
   	wrefresh(mywin);
-  	usleep(200000);
+  	// Pause for a while so we can see the initial configuration
+  	sleep(2);
 
   	// Number of loops
   	int loops = 0;
