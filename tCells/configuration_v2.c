@@ -33,7 +33,7 @@ void configuration_v2(int msizex, int msizey, tCell *a){
 //The function fscanf reads the data from the txt file string by string. So it is needed to know where the txt file user will write the locations and the structure numbers. The scanf function reads the name of the structure and the number of this structure.
 fscanf(miarchivo,"%s",types);
 fscanf(miarchivo,"%i",&n_type_struct);
-printf("There are %i types of structures defined in txt file\n",n_type_struct);
+printf("There are %i types of structures defined in txt file\r\n",n_type_struct);
 for(int j=0;j<n_type_struct;j++){
 
 //Reading the name of the strcuture
@@ -42,7 +42,7 @@ fscanf(miarchivo,"%s",lectura);
 //R_pentomino
 	if(strcmp(lectura,"R_pentomino")==0){
 	fscanf(miarchivo,"%i",&numero_r); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_r);
+	printf("Number of confg. of %s: %i\r\n",lectura,numero_r);
 //Defining locations array and counter
 	int loc_config_x_r[numero_r];
 	int loc_config_y_r[numero_r];
@@ -54,7 +54,7 @@ fscanf(miarchivo,"%s",lectura);
 		fscanf(miarchivo,"%i",&loc_config_x_r[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_r[i]);
 		if(((loc_config_x_r[i]+4)>msizex) || (loc_config_x_r[i]<1) || ((loc_config_y_r[i]+4)>msizey) || (loc_config_y_r[i]<1)){
-		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_r);
+		printf("Error: In %s, the %iº coordinates are not allowed\r\n",lectura,cont_r);
 		}else{
 		R_pentomino_insert(loc_config_x_r[i],loc_config_y_r[i],a);
 	}
@@ -66,7 +66,7 @@ fscanf(miarchivo,"%s",lectura);
 	//fscanf(miarchivo,"%s",&lectura_d);
 }else if(strcmp(lectura,"Diehard")==0){
 	fscanf(miarchivo,"%i",&numero_d); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_d);
+	printf("Number of confg. of %s: %i\r\n",lectura,numero_d);
 	//Defining locations array and counter
 	int loc_config_x_d[numero_d];
 	int loc_config_y_d[numero_d];
@@ -78,7 +78,7 @@ fscanf(miarchivo,"%s",lectura);
 		fscanf(miarchivo,"%i",&loc_config_x_d[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_d[i]);;
 		if(((loc_config_x_d[i]+4)>msizex) || (loc_config_x_d[i]<1) || ((loc_config_y_d[i]+4)>msizey) || (loc_config_y_d[i]<1)){
-		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_d);
+		printf("Error: In %s, the %iº coordinates are not allowed\r\n",lectura,cont_d);
 		}else{
       		Diehard_insert(loc_config_x_d[i],loc_config_y_d[i],a);
 	}
@@ -92,7 +92,7 @@ fscanf(miarchivo,"%s",lectura);
 	//fscanf(miarchivo,"%s",&lectura_a);
 }else if(strcmp(lectura,"Acorn")==0){
 	fscanf(miarchivo,"%i",&numero_a); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_a);
+	printf("Number of confg. of %s: %i\r\n",lectura,numero_a);
 	//Defining locations array and counter
 	int loc_config_x_a[numero_a];
 	int loc_config_y_a[numero_a];
@@ -104,7 +104,7 @@ fscanf(miarchivo,"%s",lectura);
 		fscanf(miarchivo,"%i",&loc_config_x_a[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_a[i]);
 		if(((loc_config_x_a[i]+4)>msizex) || (loc_config_x_a[i]<1) || ((loc_config_y_a[i]+4)>msizey) || (loc_config_y_a[i]<1)){
-		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_a);
+		printf("Error: In %s, the %iº coordinates are not allowed\r\n",lectura,cont_a);
 		}else{
       		Acorn_insert(loc_config_x_a[i],loc_config_y_a[i],a);
 	}
@@ -113,7 +113,7 @@ fscanf(miarchivo,"%s",lectura);
 //Spaceship
 	}else if(strcmp(lectura,"Spaceship")==0){
 	fscanf(miarchivo,"%i",&numero_s); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_s);
+	printf("Number of confg. of %s: %i\r\n",lectura,numero_s);
 //Defining locations array and counter
 	int loc_config_x_s[numero_s];
 	int loc_config_y_s[numero_s];
@@ -125,7 +125,7 @@ fscanf(miarchivo,"%s",lectura);
 		fscanf(miarchivo,"%i",&loc_config_x_s[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_s[i]);
 		if ((loc_config_x_s[i]<0 || loc_config_x_s[i]+4>msizex-1)||(loc_config_y_s[i]<0 || loc_config_y_s[i]+4>msizey-1)){
-		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_s);
+		printf("Error: In %s, the %iº coordinates are not allowed\r\n",lectura,cont_s);
 		}else{
 		Spaceship_insert(loc_config_x_s[i],loc_config_y_s[i],a);
 	}
@@ -138,7 +138,7 @@ fscanf(miarchivo,"%s",lectura);
 	//fscanf(miarchivo,"%s",&lectura_d);
 }else if(strcmp(lectura,"Block")==0){
 	fscanf(miarchivo,"%i",&numero_b); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_d);
+	printf("Number of confg. of %s: %i\r\n",lectura,numero_b);
 	//Defining locations array and counter
 	int loc_config_x_b[numero_b];
 	int loc_config_y_b[numero_b];
@@ -150,7 +150,7 @@ fscanf(miarchivo,"%s",lectura);
 		fscanf(miarchivo,"%i",&loc_config_x_b[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_b[i]);;
 		if ((loc_config_x_b[i]<0 || loc_config_x_b[i]+9>msizex-1)||(loc_config_y_b[i]<0 || loc_config_y_b[i]+4>msizey-1)){
-		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_b);
+		printf("Error: In %s, the %iº coordinates are not allowed\r\n",lectura,cont_b);
 		}else{
       		Block_insert(loc_config_x_b[i],loc_config_y_b[i],a);
 	}
@@ -161,7 +161,7 @@ fscanf(miarchivo,"%s",lectura);
 	//fscanf(miarchivo,"%s",&lectura_a);
 }else if(strcmp(lectura,"Rectangle")==0){
 	fscanf(miarchivo,"%i",&numero_re); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_re);
+	printf("Number of confg. of %s: %i\r\n",lectura,numero_re);
 	//Defining locations array and counter
 	int loc_config_x_re[numero_re];
 	int loc_config_y_re[numero_re];
@@ -173,7 +173,7 @@ fscanf(miarchivo,"%s",lectura);
 		fscanf(miarchivo,"%i",&loc_config_x_re[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_re[i]);
 		if ((loc_config_x_re[i]<0 || loc_config_x_re[i]+8>msizex-1)||(loc_config_y_re[i]<0 || loc_config_y_re[i]+4>msizey-1)){
-		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_re);
+		printf("Error: In %s, the %iº coordinates are not allowed\r\n",lectura,cont_re);
 		}else{
       		Rectangle_insert(loc_config_x_re[i],loc_config_y_re[i],a);
 	}
@@ -184,7 +184,7 @@ fscanf(miarchivo,"%s",lectura);
 	//fscanf(miarchivo,"%s",&lectura_a);
 }else if(strcmp(lectura,"Hat")==0){
 	fscanf(miarchivo,"%i",&numero_o); //Reading number of configurations of this structure
-	printf("Number of confg. of %s: %i\n",lectura,numero_o);
+	printf("Number of confg. of %s: %i\r\n",lectura,numero_o);
 	//Defining locations array and counter
 	int loc_config_x_o[numero_o];
 	int loc_config_y_o[numero_o];
@@ -196,14 +196,14 @@ fscanf(miarchivo,"%s",lectura);
 		fscanf(miarchivo,"%i",&loc_config_x_o[i]);
 		fscanf(miarchivo,"%i",&loc_config_y_o[i]);
 		if ((loc_config_x_o[i]<0 || loc_config_x_o[i]+8>msizex-1)||(loc_config_y_o[i]<0 || loc_config_y_o[i]+4>msizey-1)){
-		printf("Error: In %s, the %iº coordinates are not allowed\n",lectura,cont_o);
+		printf("Error: In %s, the %iº coordinates are not allowed\r\n",lectura,cont_o);
 		}else{
       		Hat_insert(loc_config_x_o[i],loc_config_y_o[i],a);
 	}
 	}
 
 	}else{
-		printf("%s: Structure not found or wrong name\n",lectura);
+		printf("%s: Structure not found or wrong name\r\n",lectura);
 		fscanf(miarchivo,"%i",&numero_w);
 	//Defining locations array and counter
 		int loc_config_x_w[numero_w];
