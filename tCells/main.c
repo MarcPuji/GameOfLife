@@ -8,7 +8,8 @@ The work has been divided in the following parts:
 
 - Coder 2: He was the main person in charge of coding the predefined configurations of cells
            so that they can be put in any place on the 2D plane. Then, he coded a way to insert
-           the cell initial configurations from the terminal shell.
+           the cell initial configurations from the terminal shell (placed in "terminal shell configuration"
+	   folder). He also did final performance test with profiling tools and made the profiling report.
 
 - Coder 3: He was initially in charge of designing and code the data structure. A data structure
            that was required to optimize the memory used (that was our priority as in embedded systems
