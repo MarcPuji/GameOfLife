@@ -204,6 +204,7 @@ fscanf(miarchivo,"%s",&lectura);
 	}
 
 	}else{
+		//In case that the structure in the txt file is not defined in the code or its name is just wrong, its locations are read in order not to create missing data of other structures or mixing locations.
 		printf("%s: Structure not found or wrong name\n",lectura);
 		fscanf(miarchivo,"%i",&numero_w);
 	//Defining locations array and counter
