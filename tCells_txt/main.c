@@ -50,7 +50,7 @@ int main(){
   // Plot the initial configuration to the screen
   toPlot(alive_cells, mywin);
   wrefresh(mywin);
-  sleep(2);
+  usleep(200000);
 
   // Number of loops
   int loops = 0;
@@ -76,7 +76,7 @@ int main(){
     // Plot the alive cells
     toPlot(alive_cells, mywin);
     wrefresh(mywin);
-    sleep(1);
+    usleep(100000);
     // Loop passed
     loops += 1;
   }
