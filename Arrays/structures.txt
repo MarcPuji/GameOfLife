@@ -1,3 +1,5 @@
+Types 4
+
 Spaceship 1
 21 5
 Hat 1

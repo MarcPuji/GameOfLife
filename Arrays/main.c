@@ -55,17 +55,18 @@ int main(){
       		plotter(matrix[i][j].pos_x, matrix[i][j].pos_y, matrix[i][j].alive, mywin);
   		}
   	}	
-
-  	wrefresh(mywin); // Refresh the screen so it shows the added points
-  	usleep(200000);
+  	// Refresh the screen so it shows the added points
+  	wrefresh(mywin);
+  	// Pause for a while so we can see the initial configuration
+  	sleep(2);
 
   	// Number of loops
   	int loops = 0;
 
   	// Main Loop
   	while (loops < 1000){
-      // Hide cursor
-      curs_set(0);
+      	// Hide cursor
+      	curs_set(0);
   		// Clear the window before updating the image
   		wclear(mywin);
     	// Get the neighbour information of the current status
@@ -86,7 +87,7 @@ int main(){
     	free(matrix[i]);
   	}
   	free(matrix);
-
+  	// Free the LUT memory allocation
   	free(LUT[0]);
   	free(LUT[1]);
   	free(LUT);
