@@ -68,15 +68,6 @@ int main(){
   	msizex = getmaxx(mywin);
   	msizey = getmaxy(mywin);
 
-  	// Initialize the LUTs used to update the cells status
-  	int ** LUT = (int **) malloc(2*sizeof(int *));
-  	LUT[0] = (int *) malloc(9*sizeof(int));
-  	LUT[1] = (int *) malloc(9*sizeof(int));
-
-  	LUT[0][3] = 1;
-  	LUT[1][2] = 1;
-  	LUT[1][3] = 1;
-
   	// Initialize the database
   	tCell* alive_cells = cellDataBase();
   	// Load the initial configuration to the database
@@ -100,7 +91,7 @@ int main(){
     	addCandidates(alive_cells, candidate_cells, msizex, msizey);
     	// STEP2: Check which candidates make it through the next generation
     	//        and delete the dead cells
-    	deleteDeadCells(candidate_cells, LUT);
+    	deleteDeadCells(candidate_cells);
     	// We have the new alive cells in the candidates database, so
     	// STEP3: Free the unneeded memory and make alive pointer
     	//        point to the new alive cells database
@@ -120,12 +111,7 @@ int main(){
     // Close the window
   	endwin();
   	// Free the tCell
-  	free(alive_cells);
-  	// Free the LUT memory allocation
-  	free(LUT[0]);
-  	free(LUT[1]);
-  	free(LUT);
-
+  	freeMemory(alive_cells);
   	return 0;
 }
   

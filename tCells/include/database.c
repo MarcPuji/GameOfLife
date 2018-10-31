@@ -242,21 +242,18 @@ Function used in order to determine if the cells in a database are alive or dead
 according to their neighbours and deletes from the database all those cells that
 result to be dead.
 */
-void deleteDeadCells(tCell *candidates, int ** LUT){
+void deleteDeadCells(tCell *candidates){
     // FEED FORWARD:
     // Check if the current cell deserves to be alive or not in the next iteration
-    //if(candidates->x != -1){
-    //    if(candidates->neighbours == 3)candidates->alive = 1;
-    //    else if(candidates->neighbours < 2 || candidates->neighbours > 3)candidates->alive = 0;
-    //}
     if(candidates->x != -1){
-        candidates->alive = LUT[candidates->alive][candidates->neighbours];
+        if(candidates->neighbours == 3)candidates->alive = 1;
+        else if(candidates->neighbours < 2 || candidates->neighbours > 3)candidates->alive = 0;
     }
    
     // Move along the whole database first in the y, then in the x 
     if(candidates->childy != NULL){
         // FEED FORWARD:
-        deleteDeadCells(candidates->childy, LUT);
+        deleteDeadCells(candidates->childy);
         // BACKTRACKING:
         /*
         Look if child in y is alive, if not we delete it and restructure the database.
@@ -274,7 +271,7 @@ void deleteDeadCells(tCell *candidates, int ** LUT){
     }
     if(candidates->childx != NULL){
         // FEED FORWARD
-        deleteDeadCells(candidates->childx, LUT);
+        deleteDeadCells(candidates->childx);
         // BACTRACKING:
         /* 
          It is different than before in that if x-child is alive we let it be,
@@ -305,5 +302,39 @@ void deleteDeadCells(tCell *candidates, int ** LUT){
     have been eliminated from the list and their memory freed. I 
     */
 }
+
+
+/*
+int main(char* args){
+    // initialize
+    tCell* alive = cellDataBase();
+    insertCell(1,0,1,alive);
+    insertCell(0,1,1,alive);
+    insertCell(1,2,1,alive);
+    int mapLimitx = 3;
+    int mapLimity = 3;
+    printf("ALIVE\n");
+    toString(alive);
+    // LOOP
+    // STEP1: search candidates
+    tCell* candidates = cellDataBase();
+    printf("CANDIDATES\n");
+    addCandidates(alive,candidates,mapLimitx,mapLimity);
+    toString(candidates);
+    printf("NEW ALIVE CELLS\n");
+
+    // STEP2: eliminate dead candidates
+    deleteDeadCells(candidates);
+    freeMemory(alive);
+    alive = candidates;
+    toString(alive);
+    // END LOOP
+
+    freeMemory(alive);
+    printf("finishedStuff\n");
+    return 0;         
+}
+*/
+
 
 
