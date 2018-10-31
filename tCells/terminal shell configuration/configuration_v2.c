@@ -8,9 +8,7 @@
 #include <unistd.h>
 
 #include "configuration_v2.h"
-#include "R_pentomino_insert.h"
-#include "Diehard_insert.h"
-#include "Acorn_insert.h"
+#include "figure_insert.h"
 #include "database.h"
 
 int confs;
